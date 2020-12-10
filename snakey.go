@@ -10,34 +10,24 @@ import (
 func TextToSnake(s string) string {
 	var result string
 	var words []string
-	var lastPos int
-	rs := []rune(s)
-
-	for i := 0; i < len(rs); i++ {
-		words = append(words, replaceChars(s[lastPos:i]))
-		lastPos = i
-	}
-
-	// append the last word
-	if s[lastPos:] != "" {
-		words = append(words, replaceChars(s[lastPos:]))
-	}
-
+	words = strings.Split(s, " ")
 	for k, word := range words {
 		if k > 0 {
 			result += "_"
 		}
 
-		result += strings.ReplaceAll(strings.ToLower(strings.TrimSpace(word)), "-", "_")
+		result += replaceChars(word)
 	}
 
 	return result
 }
 
 func replaceChars(s string) string {
-	reg, err := regexp.Compile("[^A-Za-z0-9`-`]+")
+	s = strings.ReplaceAll(s, " - ", "")
+	s = strings.ReplaceAll(s, "-", "_")
+	reg, err := regexp.Compile("[^A-Za-z0-9_]+")
 	if err != nil {
 		return s
 	}
-	return reg.ReplaceAllString(s, "")
+	return strings.ToLower(strings.TrimSpace(reg.ReplaceAllString(s, "")))
 }
