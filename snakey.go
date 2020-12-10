@@ -28,14 +28,14 @@ func TextToSnake(s string) string {
 			result += "_"
 		}
 
-		result += strings.ToLower(strings.TrimSpace(word))
+		result += strings.ReplaceAll(strings.ToLower(strings.TrimSpace(word)), "-", "_")
 	}
 
 	return result
 }
 
 func replaceChars(s string) string {
-	reg, err := regexp.Compile("[^A-Za-z0-9]+")
+	reg, err := regexp.Compile("[^A-Za-z0-9`-`]+")
 	if err != nil {
 		return s
 	}
