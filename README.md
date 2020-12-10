@@ -10,7 +10,6 @@ import (
   github.com/baloo32/snakey
 )
 ```
-
 Use method `TextToSnake` passing a string to receive a **snake_case** response:
 
 ```go
