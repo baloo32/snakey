@@ -1,5 +1,4 @@
 // Package snakey provides methods to convert text names to snake_case.
-// It considers the list of allowed initialsms used by github.com/golang/lint/golint (e.g. ID or HTTP)
 package snakey
 
 import (
@@ -7,7 +6,7 @@ import (
 	"strings"
 )
 
-// TextToSnake converts a given string to snake_case removing any spaces and special characters
+// TextToSnake converts a given string to snake_case removing any spaces and non-alphanumeric characters
 func TextToSnake(s string) string {
 	var result string
 	var words []string
