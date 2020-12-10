@@ -39,5 +39,5 @@ func replaceChars(s string) string {
 	if err != nil {
 		return s
 	}
-	return reg.ReplaceAllString(s, " ")
+	return reg.ReplaceAllString(s, "")
 }
